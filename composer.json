@@ -1,27 +1,29 @@
 {
-  "name": "guolei/laravel-brhk",
-  "autoload": {
-    "psr-4": {
-      "Guolei\\Laravel\\Brhk\\": "src/"
+    "name": "guolei19850528/laravel-brhk",
+    "description": "A Brhk Speaker Laravel Library By Guolei",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Guolei19850528\\Laravel\\Brhk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "guolei",
+            "email": "174000902@qq.com"
+        }
+    ],
+    "type": "library",
+    "minimum-stability": "dev",
+    "require": {
+        "php": "8.*",
+        "illuminate/support": "7.*||8.*||9.*||10.*||11.*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Guolei19850528\\Laravel\\Brhk\\ExtensionServiceProvider"
+            ]
+        }
     }
-  },
-  "authors": [
-    {
-      "name": "guolei",
-      "email": "174000902@qq.com"
-    }
-  ],
-  "type": "library",
-  "minimum-stability": "dev",
-  "require": {
-    "php": "8.*",
-    "illuminate/support": "7.*||8.*||9.*||10.*||11.*"
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Guolei\\Laravel\\Brhk\\ExtensionServiceProvider"
-      ]
-    }
-  }
 }
