@@ -2,6 +2,12 @@
     "name": "guolei19850528/laravel-brhk",
     "description": "A Brhk Speaker Laravel Library By Guolei",
     "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "天津博瑞皓科",
+        "智能音箱",
+        "Laravel"
+    ],
     "autoload": {
         "psr-4": {
             "Guolei19850528\\Laravel\\Brhk\\": "src/"
