@@ -121,9 +121,9 @@ class Speaker
      */
     public function notify(
         string                $message = '',
-        array|Collection|null $options = [],
         string                $url = '/notify.php',
         array|Collection|null $urlParameters = [],
+        array|Collection|null $options = [],
         \Closure|null         $responseHandler = null
     ): bool
     {
