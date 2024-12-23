@@ -114,28 +114,33 @@ class Speaker
      * @param string $message 通知消息内容， 可推送任意中文（多音字可能有误差）、阿拉伯数字、英文字母，限制64个字符以内  。 数字处理策略见3.1.1备注
      * 如果需要断句，则添加逗号“,”编码格式UTF-8
      * @param array|Collection|null $options Guzzle 请求选项
-     * @param \Closure|null $closure
      * @param string $url url
+     * @param array|Collection|null $urlParameters
+     * @param \Closure|null $responseHandler
      * @return bool
      */
     public function notify(
         string                $message = '',
         array|Collection|null $options = [],
-        \Closure              $closure = null,
-        string                $url = '/notify.php'
+        string                $url = '/notify.php',
+        array|Collection|null $urlParameters = [],
+        \Closure|null         $responseHandler = null
     ): bool
     {
-        $data = [
+        $data = \collect([
             "id" => $this->getId(),
             "token" => $this->getToken(),
             "version" => $this->getVersion(),
             "message" => $message,
-        ];
+        ]);
+        $options = \collect($options);
+        $urlParameters = \collect($urlParameters);
         $response = Http::baseUrl($this->getBaseUrl())
-            ->withOptions(\collect($options)->toArray())
-            ->post($url, \collect($data)->toArray());
-        if ($closure) {
-            return call_user_func($closure, $response);
+            ->withOptions($options->toArray())
+            ->withUrlParameters($urlParameters->toArray())
+            ->post($url, $data->toArray());
+        if ($responseHandler instanceof \Closure) {
+            return \value($responseHandler($response));
         }
         if ($response->ok()) {
             $json = $response->json();
